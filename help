@@ -1,0 +1,22 @@
+echo "**************************************************************************************************
+Command:                                                 Description
+*****************************************************************************************************
+lita cmd ec2.sh:                                         Provisions the new amazon linux, t2.micro instance and gives public and private ip as output.
+lita cmd ssh_check.sh [private_ip]:                      Takes private ip as parameter and Checks the connectivity ping test between the provisioned instance and lita server.
+lita cmd git_launch.sh:                                  Installs git and clones the health check script on to the host.
+lita cmd monitor.sh:                                     Gives the health check of the host.
+lita cmd docker_images.sh:                               Lists the docker images present on the host.
+lita cmd docker_container.sh:                            Lists the docker containers present in the host.
+lita cmd docker_logs.sh [container_id]:                  Takes docker container id as parameter and gives logs for that container.
+lita help jenkins:                                       Lists the jenkins commands in the slack.
+lita cmd instance_list.sh:                               Lists the instances.
+lita cmd instance_filter.sh [instance name/id/state]:    Takes instance_name/instance_id/state/ as parameter and Lists the instances. 
+lita cmd instance_metadata.sh [instance_id]:             Takes instance_id as parameter and gives instance metadata.
+lita cmd instance_by_type.sh [instance_type]:            Takes instance_type as parameter and list the instances under that type.
+lita cmd instance_by_vpc.sh [vpc_id]:                    Takes vpc_id as parameter and list the instances under that vpc.
+lita cmd start_instance.sh [instance_id]:                Takes instance_id as parameter to start the instance.
+lita cmd stop_instance.sh [instance_id]:                 Takes instance_id as parameter to stop the instance.
+lita cmd sg_for_instance.sh [instance_id]:               Takes instance_id as parameter and gives the security group of it.
+lita cmd sg_by_name.sh [security_group_name]:            Takes security group name as parameter and gives inbound and outbound rules of it.
+lita cmd sg_by_port.sh [port_number]:                    Takes port number as parameter and gives the security groups having 0.0.0.0/0 inbound permission." > /home/slack_op/help.txt
+ansible 127.0.0.1 -m shell -a "curl -F file=@/home/slack_op/help.txt -F channels=#chatops -F token=xoxb-723276734437-722837300500-a2gZ1gnJDA5kxENOGZ9n8COm https://slack.com/api/files.upload -s >> /dev/null"

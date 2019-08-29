@@ -1,0 +1,11 @@
+echo "***************************************************************************************************************************
+Command:                                                                 Description
+**********************************************************************************************************************************
+lita rally me release info for <release_name>                            Show object IDs (defects, user story, etc.) for release <release_name>.
+lita rally me <UserStoryID>                                              Show information about Rally object identified by UserStoryID.
+lita rally find defects <created|closed> in last <number> days           Find rally defects created/closed in last few days
+lita rally <start|pause|finish|accept> <UserStoryID>                     Move object between schedule states: start->In-Progress,pause->Defined,finish->Completed.
+lita rally query story (ScheduleState = 'Accepted')                      Lists the User Stories whose state is Accepted.
+rally list <defined|active|completed> <defect|story|task> in <project>   List defined/active/completed defect/story/task in project" > /home/slack_op/help.txt
+ansible 127.0.0.1 -m shell -a "curl -F file=@/home/slack_op/help.txt -F channels=#chatops -F token=xoxb-723276734437-722837300500-a2gZ1gnJDA5kxENOGZ9n8COm https://slack.com/api/files.upload -s >> /dev/null"
+

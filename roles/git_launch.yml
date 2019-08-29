@@ -1,0 +1,24 @@
+---
+- name: Installing Git and Cloning Repo.
+  hosts: Test
+  remote_user: ec2-user
+  vars:
+    - packages: ["git"]
+  tasks:
+    - name: Installing git
+      become: yes
+      yum:
+        name: "{{ item }}"
+        state: present
+      with_items: "{{ packages }}"
+
+    - name: Creating directory for git repo
+      file:
+        path: /home/ec2-user/git
+        state: directory
+        mode: '0777'
+ 
+    - name: cloning script from git
+      git:
+        repo: 'https://github.com/knagu/Scripts.git'
+        dest: /home/ec2-user/git/
