@@ -1,7 +1,0 @@
-- name: Create AWS instance
-  hosts: 127.0.0.1
-  connection: local
-  gather_facts: False
-  remote_user: ec2-user
-  roles:
-    - /home/scripts/roles/aws_ec2

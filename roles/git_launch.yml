@@ -1,6 +1,7 @@
 ---
 - name: Installing Git and Cloning Repo.
   hosts: Test
+  gather_facts: False
   remote_user: ec2-user
   vars:
     - packages: ["git"]
@@ -8,9 +9,9 @@
     - name: Installing git
       become: yes
       yum:
-        name: "{{ item }}"
+        name: "{{ packages }}"
         state: present
-      with_items: "{{ packages }}"
+      #with_items: "{{ packages }}"
 
     - name: Creating directory for git repo
       file:
